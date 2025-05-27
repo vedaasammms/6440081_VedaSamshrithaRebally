@@ -1,0 +1,841 @@
+core java
+
+1. Hello World Program
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+2. Simple Calculator
+
+import java.util.Scanner;
+
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+        double num1 = sc.nextDouble();
+        System.out.print("Enter second number: ");
+        double num2 = sc.nextDouble();
+        System.out.print("Choose operation (+, -, *, /): ");
+        char op = sc.next().charAt(0);
+        double result = 0;
+        switch (op) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/': 
+                if (num2 != 0) result = num1 / num2;
+                else {
+                    System.out.println("Cannot divide by zero");
+                    sc.close();
+                    return;
+                }
+                break;
+            default: System.out.println("Invalid operation"); sc.close(); return;
+        }
+        System.out.println("Result: " + result);
+        sc.close();
+    }
+}
+3. Even or Odd Checker
+
+import java.util.Scanner;
+
+public class EvenOddChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = sc.nextInt();
+        if (num % 2 == 0)
+            System.out.println(num + " is even.");
+        else
+            System.out.println(num + " is odd.");
+        sc.close();
+    }
+}
+4. Leap Year Checker
+
+import java.util.Scanner;
+
+public class LeapYearChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a year: ");
+        int year = sc.nextInt();
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+            System.out.println(year + " is a leap year.");
+        else
+            System.out.println(year + " is not a leap year.");
+        sc.close();
+    }
+}
+5. Multiplication Table
+
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+        sc.close();
+    }
+}
+6. Data Type Demonstration
+
+public class DataTypeDemo {
+    public static void main(String[] args) {
+        int i = 10;
+        float f = 10.5f;
+        double d = 20.99;
+        char c = 'A';
+        boolean b = true;
+
+        System.out.println("int: " + i);
+        System.out.println("float: " + f);
+        System.out.println("double: " + d);
+        System.out.println("char: " + c);
+        System.out.println("boolean: " + b);
+    }
+}
+7. Type Casting Example
+
+public class TypeCastingExample {
+    public static void main(String[] args) {
+        double d = 9.78;
+        int i = (int) d;
+        System.out.println("Double to int: " + i);
+
+        int x = 10;
+        double y = x;
+        System.out.println("Int to double: " + y);
+    }
+}
+8. Operator Precedence
+
+public class OperatorPrecedence {
+    public static void main(String[] args) {
+        int result = 10 + 5 * 2; // Multiplication first, then addition
+        System.out.println("Result of 10 + 5 * 2 = " + result);
+        // Explanation: 5*2=10, then 10+10=20
+    }
+}
+9. Grade Calculator
+
+import java.util.Scanner;
+
+public class GradeCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter marks (0-100): ");
+        int marks = sc.nextInt();
+        char grade;
+        if (marks >= 90) grade = 'A';
+        else if (marks >= 80) grade = 'B';
+        else if (marks >= 70) grade = 'C';
+        else if (marks >= 60) grade = 'D';
+        else grade = 'F';
+        System.out.println("Grade: " + grade);
+        sc.close();
+    }
+}
+10. Number Guessing Game
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Random rand = new Random();
+        int target = rand.nextInt(100) + 1;
+        Scanner sc = new Scanner(System.in);
+        int guess = 0;
+
+        System.out.println("Guess a number between 1 and 100:");
+
+        while (guess != target) {
+            guess = sc.nextInt();
+            if (guess > target) System.out.println("Too high, try again.");
+            else if (guess < target) System.out.println("Too low, try again.");
+            else System.out.println("Correct! You guessed it.");
+        }
+        sc.close();
+    }
+}
+11. Factorial Calculator
+
+import java.util.Scanner;
+
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a non-negative integer: ");
+        int num = sc.nextInt();
+        long factorial = 1;
+        for (int i = 1; i <= num; i++) factorial *= i;
+        System.out.println("Factorial of " + num + " is " + factorial);
+        sc.close();
+    }
+}
+12. Method Overloading
+
+public class MethodOverloading {
+    public static int add(int a, int b) { return a + b; }
+    public static double add(double a, double b) { return a + b; }
+    public static int add(int a, int b, int c) { return a + b + c; }
+
+    public static void main(String[] args) {
+        System.out.println(add(5, 10));
+        System.out.println(add(3.5, 2.5));
+        System.out.println(add(1, 2, 3));
+    }
+}
+13. Recursive Fibonacci
+
+import java.util.Scanner;
+
+public class RecursiveFibonacci {
+    public static int fibonacci(int n) {
+        if (n <= 1) return n;
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+        System.out.println("Fibonacci number at position " + n + " is " + fibonacci(n));
+        sc.close();
+    }
+}
+14. Array Sum and Average
+
+import java.util.Scanner;
+
+public class ArraySumAverage {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter elements:");
+        for (int i=0; i<n; i++) arr[i] = sc.nextInt();
+
+        int sum = 0;
+        for (int val : arr) sum += val;
+
+        double avg = (double)sum / n;
+        System.out.println("Sum = " + sum);
+        System.out.println("Average = " + avg);
+        sc.close();
+    }
+}
+15. String Reversal
+
+import java.util.Scanner;
+
+public class StringReversal {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        StringBuilder reversed = new StringBuilder(input).reverse();
+        System.out.println("Reversed string: " + reversed);
+        sc.close();
+    }
+}
+16. Palindrome Checker
+
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        String cleaned = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        String reversed = new StringBuilder(cleaned).reverse().toString();
+        if (cleaned.equals(reversed))
+            System.out.println("It's a palindrome.");
+        else
+            System.out.println("Not a palindrome.");
+        sc.close();
+    }
+}
+17. Class and Object Creation
+
+class Car {
+    String make;
+    String model;
+    int year;
+
+    Car(String make, String model, int year){
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    void displayDetails(){
+        System.out.println("Make: " + make + ", Model: " + model + ", Year: " + year);
+    }
+}
+
+public class CarDemo {
+    public static void main(String[] args) {
+        Car c1 = new Car("Toyota", "Camry", 2020);
+        Car c2 = new Car("Honda", "Civic", 2018);
+        c1.displayDetails();
+        c2.displayDetails();
+    }
+}
+18. Inheritance Example
+
+class Animal {
+    void makeSound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Bark");
+    }
+}
+
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        Dog dog = new Dog();
+        animal.makeSound();
+        dog.makeSound();
+    }
+}
+19. Interface Implementation
+
+interface Playable {
+    void play();
+}
+
+class Guitar implements Playable {
+    public void play() {
+        System.out.println("Playing guitar");
+    }
+}
+
+class Piano implements Playable {
+    public void play() {
+        System.out.println("Playing piano");
+    }
+}
+
+public class InterfaceDemo {
+    public static void main(String[] args) {
+        Playable g = new Guitar();
+        Playable p = new Piano();
+        g.play();
+        p.play();
+    }
+}
+20. Try-Catch Example
+
+import java.util.Scanner;
+
+public class TryCatchExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter numerator: ");
+        int num = sc.nextInt();
+        System.out.print("Enter denominator: ");
+        int denom = sc.nextInt();
+        try {
+            int result = num / denom;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+        sc.close();
+    }
+}
+21. Custom Exception
+
+import java.util.Scanner;
+
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) throw new InvalidAgeException("Age must be at least 18.");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your age: ");
+        int age = sc.nextInt();
+        try {
+            checkAge(age);
+            System.out.println("Age is valid.");
+        } catch (InvalidAgeException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+        sc.close();
+    }
+}
+22. File Writing
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileWritingDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text to write to file: ");
+        String text = sc.nextLine();
+
+        try (FileWriter fw = new FileWriter("output.txt")) {
+            fw.write(text);
+            System.out.println("Data written to output.txt");
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+        sc.close();
+    }
+}
+23. File Reading
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReadingDemo {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("output.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+24. ArrayList Example
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter names (type 'exit' to stop):");
+        while (true) {
+            String name = sc.nextLine();
+            if (name.equalsIgnoreCase("exit")) break;
+            names.add(name);
+        }
+        System.out.println("Names entered:");
+        for (String name : names) {
+            System.out.println(name);
+        }
+        sc.close();
+    }
+}
+25. HashMap Example
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        HashMap<Integer, String> map = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Add entries (ID and Name), type ID 0 to stop:");
+        while (true) {
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+            if (id == 0) break;
+            sc.nextLine(); // consume newline
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+            map.put(id, name);
+        }
+
+        System.out.print("Enter ID to search: ");
+        int searchId = sc.nextInt();
+        String name = map.get(searchId);
+        if (name != null)
+            System.out.println("Name: " + name);
+        else
+            System.out.println("ID not found.");
+        sc.close();
+    }
+}
+26. Thread Creation
+
+class MessageThread extends Thread {
+    private String message;
+
+    MessageThread(String message) {
+        this.message = message;
+    }
+
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(message + " - " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {}
+        }
+    }
+}
+
+public class ThreadDemo {
+    public static void main(String[] args) {
+        Thread t1 = new MessageThread("Thread 1");
+        Thread t2 = new MessageThread("Thread 2");
+        t1.start();
+        t2.start();
+    }
+}
+
+
+27. Lambda Expressions (Sorting a List)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class LambdaSortDemo {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("Banana");
+        list.add("Apple");
+        list.add("Orange");
+
+        // Sort using lambda expression
+        Collections.sort(list, (a, b) -> a.compareToIgnoreCase(b));
+
+        System.out.println("Sorted list: " + list);
+    }
+}
+28. Generics Example
+
+class GenericBox<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class GenericsDemo {
+    public static void main(String[] args) {
+        GenericBox<Integer> intBox = new GenericBox<>();
+        intBox.setValue(123);
+        System.out.println("Integer Value: " + intBox.getValue());
+
+        GenericBox<String> strBox = new GenericBox<>();
+        strBox.setValue("Hello Generics");
+        System.out.println("String Value: " + strBox.getValue());
+    }
+}
+29. Enum Example
+
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}
+
+public class EnumDemo {
+    public static void main(String[] args) {
+        Day today = Day.WEDNESDAY;
+
+        switch (today) {
+            case SATURDAY:
+            case SUNDAY:
+                System.out.println("It's weekend!");
+                break;
+            default:
+                System.out.println("It's a weekday.");
+        }
+    }
+}
+30. Static Keyword Example
+
+class Counter {
+    static int count = 0;
+
+    Counter() {
+        count++;
+    }
+
+    static void displayCount() {
+        System.out.println("Count: " + count);
+    }
+}
+
+public class StaticDemo {
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+        Counter.displayCount();  // Outputs: Count: 3
+    }
+}
+31. Final Keyword Example
+
+public class FinalDemo {
+    final int MAX_VALUE = 100;
+
+    public void display() {
+        System.out.println("Max value: " + MAX_VALUE);
+        // MAX_VALUE = 200; // Error: cannot assign a value to final variable
+    }
+
+    public static void main(String[] args) {
+        FinalDemo obj = new FinalDemo();
+        obj.display();
+    }
+}
+32. String Methods Example
+
+public class StringMethodsDemo {
+    public static void main(String[] args) {
+        String str = "Hello World";
+
+        System.out.println("Length: " + str.length());
+        System.out.println("Uppercase: " + str.toUpperCase());
+        System.out.println("Lowercase: " + str.toLowerCase());
+        System.out.println("Substring (0,5): " + str.substring(0, 5));
+        System.out.println("Contains 'World': " + str.contains("World"));
+        System.out.println("Replace 'World' with 'Java': " + str.replace("World", "Java"));
+    }
+}
+33. Wrapper Classes Example
+
+public class WrapperDemo {
+    public static void main(String[] args) {
+        int i = 10;
+        Integer intObj = Integer.valueOf(i);   // Boxing
+        int j = intObj.intValue();             // Unboxing
+
+        System.out.println("Primitive int: " + i);
+        System.out.println("Integer object: " + intObj);
+        System.out.println("Unboxed int: " + j);
+    }
+}
+34. StringBuilder Example
+
+public class StringBuilderDemo {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+        sb.insert(5, ",");
+        sb.replace(6, 11, " Java");
+        sb.deleteCharAt(sb.length() - 1);
+        System.out.println(sb.toString());
+    }
+}
+35. Date and Time Example
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeDemo {
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        System.out.println("Current Date: " + date);
+        System.out.println("Current Time: " + time);
+        System.out.println("Current Date & Time: " + dateTime);
+
+        // Formatting date/time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        System.out.println("Formatted DateTime: " + dateTime.format(formatter));
+    }
+}
+36. Serialization Example
+
+import java.io.*;
+
+class Student implements Serializable {
+    String name;
+    int age;
+
+    Student(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class SerializationDemo {
+    public static void main(String[] args) {
+        Student student = new Student("John", 21);
+
+        // Serialize object
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("student.ser"))) {
+            oos.writeObject(student);
+            System.out.println("Serialization done");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Deserialize object
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("student.ser"))) {
+            Student s = (Student) ois.readObject();
+            System.out.println("Deserialized Student: " + s.name + ", Age: " + s.age);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+37. JDBC Connection Example
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class JDBCDemo {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/testdb";
+        String user = "root";
+        String password = "yourpassword";
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id") + ", Name: " + rs.getString("name"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+Note: Change database URL, username, password, and query as needed.
+
+38. Swing GUI Example
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+
+public class SwingDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Swing Example");
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Click the button");
+        JButton button = new JButton("Click me");
+
+        button.addActionListener(e -> label.setText("Button clicked!"));
+
+        panel.add(label);
+        panel.add(button);
+        frame.add(panel);
+
+        frame.setSize(300, 150);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+39. JavaFX GUI Example
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class JavaFXDemo extends Application {
+    public void start(Stage stage) {
+        Label label = new Label("Click the button");
+        Button button = new Button("Click me");
+
+        button.setOnAction(e -> label.setText("Button clicked!"));
+
+        VBox vbox = new VBox(10, label, button);
+        Scene scene = new Scene(vbox, 300, 150);
+
+        stage.setTitle("JavaFX Example");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+40. Networking (Client Socket)
+
+import java.io.*;
+import java.net.Socket;
+
+public class ClientDemo {
+    public static void main(String[] args) {
+        try (Socket socket = new Socket("localhost", 5000);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+             
+            out.println("Hello Server");
+            String response = in.readLine();
+            System.out.println("Server says: " + response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+41. Networking (Server Socket)
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerDemo {
+    public static void main(String[] args) {
+        try (ServerSocket server = new ServerSocket(5000)) {
+            System.out.println("Server started, waiting for client...");
+            Socket client = server.accept();
+            System.out.println("Client connected");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+
+            String message = in.readLine();
+            System.out.println("Client says: " + message);
+
+            out.println("Hello Client");
+            
+            client.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
