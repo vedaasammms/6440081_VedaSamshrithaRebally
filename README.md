@@ -38,7 +38,7 @@ Key Folder:
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/likithathipparthi/6442215_Thipparthi-Likitha
+   (https://github.com/vedaasammms/6440081_VedaSamshrithaRebally.git)
 Open relevant folders in your preferred IDE or code editor.
 
 Use any local server (e.g., Live Server in VS Code) for HTML/CSS/JS files.
